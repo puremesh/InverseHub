@@ -78,7 +78,7 @@ if game.PlaceId == 3823781113 then
         getgenv().doublejumpval = val
     end)
     misc:Slider("Custom JumpPower",1,5000,50, function(val)
-        getgenv(). = val
+        getgenv().jp = val
     end)
     misc:Slider("Custom WalkSpeed",1,1000,16, function(val)
         getgenv().ws = val
@@ -154,4 +154,3 @@ changeclr:Colorpicker("Change UI Color",Color3.fromRGB(132, 18, 226), function(t
 lib:ChangePresetColor(Color3.fromRGB(t.R * 255, t.G * 255, t.B * 255))
 end)
 end
-
