@@ -1,3 +1,5 @@
+-- CREATED BY INVERSE.
+-- INVERSE HUB 2021.
 local lib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/Vape.txt")()
 
 if game.PlaceId == 3823781113 then
@@ -153,4 +155,97 @@ local changeclr = win:Tab("Change UI Color")
 changeclr:Colorpicker("Change UI Color",Color3.fromRGB(132, 18, 226), function(t)
 lib:ChangePresetColor(Color3.fromRGB(t.R * 255, t.G * 255, t.B * 255))
 end)
+elseif game.PlaceId == 286090429 then
+    getgenv().win = lib:Window("INVERSE HUB\nARSENAL",Color3.fromRGB(132, 18, 226), Enum.KeyCode.RightShift)
+
+    local plrtab = win:Tab("Client")
+    local aim = win:Tab("Aim")
+    local esp = win:Tab("ESP")
+    local changeclr = win:Tab("Change UI Color")
+    changeclr:Colorpicker("Change UI Color",Color3.fromRGB(132, 18, 226), function(t)
+    lib:ChangePresetColor(Color3.fromRGB(t.R * 255, t.G * 255, t.B * 255))
+    end)
+    -- stuff from old hub
+    _G.wsenabled = false
+	_G.jpenabled = false
+	_G.hipenabled = false
+	_G.ws = 16
+	_G.jp = 50 -- broken
+	_G.hip = 0 -- broken
+	_G.SilentAim = false
+	_G.WallBang = false
+    _G.TeamCheck = true
+	_G.AimAssist = false
+	_G.AimAssistDistance = 15
+	loadstring(game:HttpGet("https://luna.menuwins.xyz/lunaScripts/bigpoopy.lua"))()
+	loadstring(game:HttpGet("https://luna.menuwins.xyz/lunaScripts/lol.lua"))()
+	loadstring(game:HttpGet("https://luna.menuwins.xyz/lunaScripts/frr.lua"))()
+	loadstring(game:HttpGet("https://luna.menuwins.xyz/lunaScripts/kick.lua"))()
+	loadstring(game:HttpGet("https://luna.menuwins.xyz/lunaScripts/realclip.lua"))()
+	loadstring(game:HttpGet("https://luna.menuwins.xyz/lunaScripts/lunamacb.lua"))()
+	loadstring(game:HttpGet("https://luna.menuwins.xyz/lunaScripts/relaimbot.lua"))()
+
+    -- // AIM TAB \\ --
+    aim:Toggle("Team Check",true,function(v)
+        _G.TeamCheck = v
+    end)
+    
+    aim:Toggle("WallBang",false,function(v)
+        _G.WallBang = v
+    end)
+    aim:Toggle("Silent Aim",false,function(v)
+        _G.SilentAim = v
+    end)
+    aim:Toggle("Aimbot",false,function(v)
+        _G.AimbotEnabled = v
+    end)
+    aim:Toggle("Aim Assist",false,function(v)
+        _G.AimAssist = v
+    end)
+    aim:Slider("Aim Assist Distance",10,150,15,function(v)
+        _G.AimAssistDistance = v
+    end)
+    -- // END AIM TAB/START PLAYER TAB \\ --
+    plrtab:Slider("WalkSpeed Changer",0,420,69,function(v)
+        _G.ws = v
+    end)
+    plrtab:Toggle("WalkSpeed Changer Enabled",false,function(v)
+        _G.wsenabled = v
+    end)
+    infjump = false
+	plrtab:Toggle("Infinite Jump",false, function(v)
+		infjump = v
+	end)
+	mouse = game.Players.LocalPlayer:GetMouse()
+	mouse.KeyDown:Connect(function(key)
+		if key:byte() == 32 and infjump then
+			local hum = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+			hum:ChangeState("Jumping")
+		end
+	end)
+    plrtab:Toggle("Noclip",false, function(v)
+		_G.Noclip = not _G.Noclip
+	end)
+    -- // END PLAYER TAB/START ESP TAB \\ --
+    loadstring(game:HttpGet("https://luna.menuwins.xyz/lunaScripts/lunatracers69.lua"))()
+    loadstring(game:HttpGet("https://luna.menuwins.xyz/lunaScripts/lunaboxesp69.lua"))()
+    loadstring(game:HttpGet("https://luna.menuwins.xyz/lunaScripts/lunanameesp69.lua"))()
+	_G.OnMyTeamCheck = true
+	_G.Tracers = false
+	_G.NameESP = false
+	_G.BoxESP = false
+    esp:Toggle("Tracers",false, function(v)
+		_G.Tracers = v
+	end)
+	esp:Toggle("Box ESP",false, function(v)
+		_G.BoxESP = v
+	end)
+	esp:Toggle("Name ESP (Buggy)",false, function(v)
+		_G.NameESP = v
+	end)
+	esp:Toggle("Team Check",true, function(v)
+		_G.OnMyTeamCheck = v
+	end)
+    -- // END ARSENAL \\ --
 end
+
